@@ -1,12 +1,16 @@
 class BooksController < ApplicationController
   def new
-    @books = Book.new
+    @book = Book.new
   end
   
   def create
-    book = Book.new(book_params)
-    books.save
-    redirect_to '/top'
+    @book = Book.new(book_params)
+    if @book.save
+      flash[:notice] = "Book was successfully created."
+      redirect_to book_path(@book.id)
+    else
+      render :new
+    end
   end
 
   def index
