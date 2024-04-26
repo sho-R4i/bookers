@@ -7,7 +7,8 @@
       <% end %>
     </ul>
 <% end %>
-<%= form_with model: @book do |f| %>
+
+<%= form_with model: @book, method: :patch do |f| %>
   <p>Title</p>
   <%= f.text_field :title %>
   <p>Body</p>
